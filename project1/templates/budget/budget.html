@@ -1,0 +1,38 @@
+<html>
+  <head>
+    	{% include "core/bootstrap.html" %}
+      {% load static %}
+  </head>
+  <body>
+		{% include "core/navigation.html" %}
+    <div class="jumbotron">
+      <h1>Budget</h1>
+      {% if not table_data %}
+    </p>There are no Task entries...</p>
+    {% else %}
+    <table class="table table-striped">
+      <tr>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Projected</th>
+        <th>Actual</th>
+      </tr>
+      {% for row in table_data %}
+      <tr>
+        <td>{{ row.description }}</td>
+        <td>{{ row.category }}</td>
+        <td>{{ row.projected }}</td>
+        <td>{{ row.actual }}</td>
+        <td>
+          <a class="btn btn-primary">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    <form method="GET" action="/budget/add/">
+      <input type="submit" class="btn btn-primary" value ="Add Budget">
+    </form>
+    </div>
+  </body>
+</html>

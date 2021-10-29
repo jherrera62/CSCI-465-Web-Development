@@ -1,0 +1,57 @@
+<html>
+  <head>
+    	{% include "core/bootstrap.html" %}
+      {% load static %}
+  </head>
+  <body>
+		{% include "core/navigation.html" %}
+    <div class="jumbotron">
+      <h1>Tasks</h1>
+      {% if not table_data %}
+      print("ASS")
+    </p>There are no Task entries...</p>
+    {% else %}
+    <table class="table table-striped">
+      <tr>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Completed</th>
+      </tr>
+      {% for row in table_data %}
+      <tr>
+        <td>{{ row.description }}</td>
+        <td>{{ row.category }}</td>
+          <td>   <a href="?toggle={{row.id}}">
+                  {% if row.is_completed %}Yes {% else %}No{% endif%}
+                  </a> </td>
+        <td>
+          <a class="btn btn-primary" href="/tasks/edit/{{ row.id }}">Edit</a>
+          <a class="btn btn-primary" href="#" onclick="confirmDeleteModal({{ row.id }})">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    <form method="GET" action="/tasks/add/">
+      <input type="submit" class="btn btn-primary" value ="Add Task">
+    </form>
+    </div>
+    <div id="deleteModal" class="modal fade" role='dialog'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Delete Journal Entry</h4>
+          </div>
+          <div class="modal-body">
+            <p>Do you really want to delete this Journal Entry?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <span id= 'deleteButton'></span>
+          </div>
+        </div>
+      </div>
+     </div>
+   </body>
+</html>

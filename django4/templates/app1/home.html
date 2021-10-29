@@ -1,0 +1,39 @@
+<html>
+	<head>
+
+		{% load static %}
+		{% include "app1/bootstrap.html" %}
+		<title>Example HTML page</title>
+		<script src="{%static 'chess.js'%}" /> </script>
+		<link rel ="stylesheet" href="{%static 'chess.css' %}"/></link>
+	</head>
+	<body>
+		{% include "app1/navigation.html" %}
+		<h1>CINS 465: Assignment 4 by Juan Herrera</h1>
+		<table border="1">
+			{% for row in rows%}
+				<tr>
+					 <th>{{ forloop.revcounter }}</th>
+				{% for name,value in row.items%}
+					<td id="{{name}}">
+						{% autoescape off %}
+						{{value}}
+						{% endautoescape %}
+					</td>
+				{%endfor%}
+				</tr>
+			{%endfor%}
+			<th></th><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>g</th><th>h</th>
+		</table>
+		<div class="container" align="center" class="form-group">
+			<form method = "post">{% csrf_token %}
+				{{chess_form.as_table}}
+
+				<button type="submit" class="btn btn-outline-primary" name="move" onclick="makeMove();">Move</button>
+			</form>
+			<form method="get">
+				<button type="submit" class="btn btn-outline-primary" name="reset" onclick="resetBoard();">Reset</button>
+			</form>
+		</div>
+	</body>
+</html>

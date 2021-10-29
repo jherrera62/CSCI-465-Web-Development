@@ -1,0 +1,30 @@
+<html>
+  <head>
+
+    {% load static %}
+    {% include "app1/bootstrap.html" %}
+    <title>Example HTML page</title>
+    <script src="{%static 'chess.js'%}" /> </script>
+    <link rel ="stylesheet" href="{%static 'chess.css' %}"/></link>
+  </head>
+  <body>
+    {% include "app1/navigation.html" %}
+    <h1>CINS 465: Assignment 4 by Juan Herrera</h1>
+    <div class="col-2">
+      <img src="{%static 'IMG_0549.JPG'%}" class="img-fluid" />
+    </div>
+    <h1>About</h1>
+    <ol>
+			<li>First i started by making the default grid to see if i understood how to make it</li>
+			<li>After, i added the code from the handout to test if it would work </li>
+			<li>once i implemented the code i checkered the colors on the board with the help of the guide from the link in the hand out</li>
+			<li>next i added the pieces to the board with their corresponding codes</li>
+			<li>After the chess pieces were in place i had a bit of trouble implementing the header numbers on the side of the rows because it switched the colors of the chess board so i had to tweak the function i had to implement the checkered pattern</li>
+      <li>Once the chess board was set up the next step was to port it over to Django</li>
+      <li>The first thing I did to begin the porting process was to run the manage.py startproject command in order to make the neccessary files for django to run smoothly</li>
+      <li>Next I added an application directory in order to have access to the views.py file</li>
+      <li>Next i added all the neccessary views in views.py and i linked them in the urls.py i also made the matching .html templates in the templates folder</li>
+      <li>Next I implemented the navigation bar so that i could navigate through different sections of my program</li>
+      <li>Once all the correct template files we in place i filled them with the appropriate content and removed content from the home.html file</li>
+		</ol>
+</html>
