@@ -8,7 +8,6 @@
     <div class="jumbotron">
       <h1>Tasks</h1>
       {% if not table_data %}
-      print("ASS")
     </p>There are no Task entries...</p>
     {% else %}
     <table class="table table-striped">
@@ -26,7 +25,7 @@
                   </a> </td>
         <td>
           <a class="btn btn-primary" href="/tasks/edit/{{ row.id }}">Edit</a>
-          <a class="btn btn-primary" href="#" onclick="confirmDeleteModal({{ row.id }})">Delete</a>
+          <a class="btn btn-primary" href="#" onclick="confirmDeleteModal({{ row.id }})" name="delete">Delete</a>
         </td>
       </tr>
       {% endfor %}

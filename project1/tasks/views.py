@@ -20,12 +20,10 @@ def tasks(request):
         context={"table_data":table_data}
         return render(request, 'tasks/tasks.html', context)
     if(request.method=="GET"and "toggle" in request.GET):
-        return redirect("/")
-        toggle_is_completed=Task(request.GET)
-        if(toggle_is_completed.is_valid()):
-            if(Task.objects.filter(user=request.user, is_completed='False')):
-                return redirect("/")
-
+        id=request.GET["toggle"]
+        task=Task.objects.get(id=id)
+        task.is_completed=not task.is_completed
+        task.save()
 def add(request):
     if (request.method=="POST"):
         if("add" in request.POST):
