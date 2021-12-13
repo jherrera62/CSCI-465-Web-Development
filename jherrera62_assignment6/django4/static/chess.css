@@ -1,0 +1,26 @@
+body
+{
+  padding:40px;
+}
+table
+{
+  margin:auto;
+  background: tan;
+  border: 1px solid black;
+}
+tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) td:nth-child(odd)
+{
+  background: chocolate;
+}
+td
+{
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  font-size: 60px;
+  text-align: center;
+}
+th
+{
+  border: 0px;
+}

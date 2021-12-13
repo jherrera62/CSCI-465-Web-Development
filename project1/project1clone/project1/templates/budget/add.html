@@ -1,0 +1,22 @@
+<html>
+  <head>
+    {% include "core/bootstrap.html" %}
+    {% load static %}
+  </head>
+  <body>
+    {% include "core/navigation.html" %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Add Budget Item</h1>
+        <form method="POST">{% csrf_token %}
+          <table>
+            {{ form_data.as_table }}
+            <tr><td>
+              <input type="submit" class="btn btn-primary" name="add" value = "Add Budget"/>
+            </td></tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

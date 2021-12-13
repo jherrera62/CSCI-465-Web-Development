@@ -1,0 +1,48 @@
+<html>
+  <head>
+    	{% include "core/bootstrap.html" %}
+      {% load static %}
+      <script src="{% static 'tasks.js'%}"></script>
+  </head>
+  <body>
+		{% include "core/navigation.html" %}
+    <div class="jumbotron">
+      <form method="GET" action="/budget/add/">
+         <input type="submit" class="btn btn-primary" value ="Add Budget">
+       </form>
+      <h1>Budget</h1>
+      {% if not table_data %}
+    <p>There are no Task entries...</p>
+    {% else %}
+    <table class="table table-striped">
+      <tr>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Projected</th>
+        <th>Actual</th>
+      </tr>
+      {% for row in table_data %}
+      <tr>
+        <td>{{ row.description }}</td>
+        <td>{{ row.category }}</td>
+        <td>{{ row.projected }}</td>
+        <td>{{ row.actual }}</td>
+        <td>
+          <a class="btn btn-primary" href="/budget/edit/{{ row.id }}">Edit</a>
+          <a class="btn btn-primary" href="#" onclick="confirmDeleteModal({{ row.id }})" name="delete">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% if total < 0 %}
+      <p>There is a deficit of ${{ total }}</p>
+    {% else %}
+      <p> there is a surplus of ${{ total }}</p>
+    {% endif %}
+    {% endif %}
+<!--    <form method="GET" action="/budget/add/">
+      <input type="submit" class="btn btn-primary" value ="Add Budget">
+    </form>-->
+    </div>
+  </body>
+</html>
